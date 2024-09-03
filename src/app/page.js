@@ -1,3 +1,4 @@
+import Link from "next/link";
 import NavBar from "./shared/Navbar/page";
 
 export const metadata = {
@@ -7,9 +8,13 @@ export const metadata = {
 
 export default async function Home() {
   const data = await fetch("http://localhost:5000/shoes", {
-    cache: true
+    next: {
+      revalidate: 5
+    }
   });
   const shoes = await data.json();
+
+  throw new Error("Main page crush")
 
   return (
     <div>
@@ -35,6 +40,9 @@ export default async function Home() {
             </div>)
         }
       </div>
+      <Link href="/all-shoes" className="flex justify-center items-center">
+        <button className="btn btn-outline btn-primary">Show All</button>
+      </Link>
     </div>
   );
 }
