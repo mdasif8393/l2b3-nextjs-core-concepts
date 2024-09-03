@@ -6,7 +6,9 @@ export const metadata = {
 }
 
 export default async function Home() {
-  const data = await fetch("http://localhost:5000/shoes");
+  const data = await fetch("http://localhost:5000/shoes", {
+    cache: true
+  });
   const shoes = await data.json();
 
   return (
@@ -24,9 +26,10 @@ export default async function Home() {
               <div className="card-body">
                 <h2 className="card-title">{shoe.title}</h2>
                 <p>{shoe.description}</p>
-                <p>$ {shoe.price}</p>
+                <p className="text-red-600 font-bold">$  {shoe.price}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Buy Now</button>
+                  <button className="btn btn-outline btn-primary">Buy Now</button>
+                  <button className="btn btn-outline btn-primary">Details</button>
                 </div>
               </div>
             </div>)
