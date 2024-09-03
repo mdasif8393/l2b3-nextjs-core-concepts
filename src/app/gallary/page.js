@@ -1,5 +1,5 @@
+import batImage from '@/assets/bat.jpg';
 import Image from "next/image";
-import batImage from '../../assets/bat.jpg';
 
 const GalleryPage = () => {
     return (
